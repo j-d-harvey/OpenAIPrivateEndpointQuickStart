@@ -7,20 +7,17 @@ param openAiAccountName string = 'oai-private-demo'
 @description('Custom subdomain name for the Azure OpenAI account')
 param customSubDomainName string
 
-@description('SKU for the Azure OpenAI account')
-param sku string = 'S0'
-
 @description('Tokens per Minute Rate Limit (thousands)')
-param embeddingsDeploymentCapacity int
+param embeddingsDeploymentCapacity int = 10
 
 @description('Name of the Embeddings Model to deploy')
-param embeddingsModelName string
+param embeddingsModelName string = 'text-embedding-ada-002'
 
 @description('Tokens per Minute Rate Limit (thousands)')
-param gptDeploymentCapacity int
+param gptDeploymentCapacity int = 10
 
 @description('Name of the GPT Model to deploy')
-param chatGptModelName string
+param chatGptModelName string = 'gpt-35-turbo'
 
 @description('Name of the Azure Virtual Network')
 param virtualNetworkName string = 'vnet-oai-demo'
@@ -160,7 +157,7 @@ resource oaiAccount 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
     publicNetworkAccess: 'Disabled'
   }
   sku: {
-    name: sku
+    name: 'S0'
   }
   dependsOn: [
     virtualNetwork

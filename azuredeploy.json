@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.20.4.51522",
-      "templateHash": "6598093403949168763"
+      "templateHash": "9863626821569705416"
     }
   },
   "parameters": {
@@ -29,33 +29,30 @@
         "description": "Custom subdomain name for the Azure OpenAI account"
       }
     },
-    "sku": {
-      "type": "string",
-      "defaultValue": "S0",
-      "metadata": {
-        "description": "SKU for the Azure OpenAI account"
-      }
-    },
     "embeddingsDeploymentCapacity": {
       "type": "int",
+      "defaultValue": 10,
       "metadata": {
         "description": "Tokens per Minute Rate Limit (thousands)"
       }
     },
     "embeddingsModelName": {
       "type": "string",
+      "defaultValue": "text-embedding-ada-002",
       "metadata": {
         "description": "Name of the Embeddings Model to deploy"
       }
     },
     "gptDeploymentCapacity": {
       "type": "int",
+      "defaultValue": 10,
       "metadata": {
         "description": "Tokens per Minute Rate Limit (thousands)"
       }
     },
     "chatGptModelName": {
       "type": "string",
+      "defaultValue": "gpt-35-turbo",
       "metadata": {
         "description": "Name of the GPT Model to deploy"
       }
@@ -244,7 +241,7 @@
         "publicNetworkAccess": "Disabled"
       },
       "sku": {
-        "name": "[parameters('sku')]"
+        "name": "S0"
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
